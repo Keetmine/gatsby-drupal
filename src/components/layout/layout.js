@@ -1,54 +1,45 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import {
-  container,
-  heading,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-  siteTitle
-} from './layout.module.scss'
+import {useSiteMetadata} from "../../hooks/use-site-metadata";
+import Header from "../header";
+import WebFormModal from "../webFormModal";
+import { PopupContext, showPopup } from '../../helpers/context';
 
-const Layout = ({ pageTitle, children }) => {
-
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+export const TitlePage = ({pageTitle}) => {
+  const {title} = useSiteMetadata()
   return (
-    <div className={container}>
-      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
-      </main>
-    </div>
-  )
+    <title>{pageTitle} | {title}</title>
+  );
 }
+
+class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowPopup: showPopup.hide,
+    };
+
+    this.togglePopup = () => {
+      this.setState((state) => ({
+        isShowPopup: state.isShowPopup === showPopup.show ? showPopup.hide : showPopup.show,
+      }));
+    };
+  }
+
+  render() {
+    const {children, pageTitle} = this.props;
+    const {isShowPopup} = this.state;
+
+    return (
+      <PopupContext.Provider value={isShowPopup}>
+        <TitlePage pageTitle={pageTitle} />
+        <Header/>
+        <main>
+          {children}
+        </main>
+        <WebFormModal title="Let’s begin the conversation!" togglePopup={this.togglePopup}/>
+      </PopupContext.Provider>
+    )
+  }
+}
+
 export default Layout

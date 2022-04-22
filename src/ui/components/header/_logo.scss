@@ -1,0 +1,24 @@
+.navbar-brand {
+  font-family: $source-sans-black;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: $white;
+  transition: color 0.25s linear;
+  margin-right: auto;
+  @include media-breakpoint-down(sm) {
+    color: $black;
+  }
+  a {
+    color: $white;
+    transition: color 0.25s linear;
+  }
+  &:hover {
+    color: $pink;
+    transition: color 0.25s linear;
+    a {
+      color: $pink;
+      transition: color 0.25s linear;
+    }
+  }
+}

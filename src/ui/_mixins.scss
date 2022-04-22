@@ -1,0 +1,53 @@
+@mixin light-text {
+  font-family: $source-sans-light;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+@mixin title {
+  font-family: $source-sans-black;
+  letter-spacing: 0;
+}
+
+@mixin link {
+  color: $pink;
+  outline: 0;
+  text-decoration: none;
+  &:focus, &:hover, &:active {
+    outline: 0;
+    text-decoration: none;
+    color: $dark-pink;
+  }
+  &[disabled], &.disabled {
+    color: $disabled;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+@mixin btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border: none;
+  border-radius: 3px;
+  background: $pink;
+  font-family: $source-sans-black;
+  color: $white;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  transition: all 0.25s linear;
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+    background: $dark-pink;
+    color: $white;
+    transition: all 0.25s linear;
+  }
+}

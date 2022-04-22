@@ -1,0 +1,177 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 48rem;
+  padding: 10rem 0;
+  background: $black;
+  color: $white;
+  @include media-breakpoint-down(sm) {
+    padding: 4rem 0;
+    min-height: auto;
+  }
+
+  .row .column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    //width: 100%;
+    &.column {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+
+  &-first {
+    padding-top: 20rem;
+    .row .column {
+      margin: auto;
+    }
+    @include media-breakpoint-down(sm) {
+      padding-top: 12rem;
+    }
+  }
+
+  &.bg-image {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .container {
+      z-index: 2;
+    }
+  }
+
+  &-blue-gradient {
+    background: $blue-gradient;
+    color: $white;
+    &.bg-image {
+      &:after {
+        background: $blue-gradient;
+      }
+    }
+    h1, h2 {
+      & > span {
+        display: flex;
+        z-index: 1;
+        margin: 0 1.5rem;
+        &:after {
+          content: '';
+          background: url("/static/images/druplicon.png") no-repeat;
+          background-size: contain;
+          position: absolute;
+          width: 4.375rem;
+          height: 5rem;
+          z-index: -1;
+          top: -5px;
+          left: -10px;
+          @include media-breakpoint-down(sm) {
+            width: 3.375rem;
+          }
+        }
+      }
+    }
+  }
+
+  &-white {
+    background: $white;
+    color: $black;
+    &.bg-image {
+      &:after {
+        background: $white;
+        opacity: 0.8;
+      }
+    }
+    h1, h2 {
+      & > span {
+        padding-bottom: 0.1rem;
+        border-bottom: 1px solid $border-blue-opacity;
+      }
+    }
+  }
+
+  &-black {
+    background: $black;
+    color: $white;
+    &.bg-image {
+      &:after {
+        background: $black;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &-darkblue-gradient {
+    background: $darkblue-gradient;
+    color: $white;
+    &.bg-image {
+      &:after {
+        background: $darkblue-gradient;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &-slider {
+    min-height: unset;
+    padding-bottom: 0;
+    @include media-breakpoint-down(sm) {
+      padding-bottom: 4rem;
+    }
+  }
+
+  .half-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 48rem;
+    display: block;
+    .map-container {
+      height: 48rem !important;
+    }
+    @include media-breakpoint-down(md) {
+      position: relative;
+      width: 100%;
+      height: 15rem;
+      .map-container {
+        height: 15rem !important;
+      }
+    }
+  }
+
+  &#contact {
+    h2, & h1 {
+      position: relative;
+      z-index: 4;
+      padding: 1rem;
+      background: $white;
+      line-height: 1;
+      color: $black;
+      span {
+        padding: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+.paragraph--type--text-section {
+  position: relative;
+}
+
+.paragraph--type--column {
+  position: unset;
+}
+

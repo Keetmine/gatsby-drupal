@@ -1,0 +1,182 @@
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @include light-text;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $blue-gradient;
+  color: $white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#page {
+  position: relative;
+}
+
+a, button, input {
+  cursor: pointer;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+fieldset {
+  max-width: 100%;
+  min-width: unset;
+  margin-bottom: 1.25rem;
+}
+
+a {
+  @include link;
+}
+
+h1, h2 {
+  @include title;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  white-space: nowrap;
+  margin: 0 0 4rem;
+  font-size: 3.25rem;
+  line-height: 4rem;
+  span {
+    font-family: $playfair-italic;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+    margin: 0 1rem;
+  }
+  //@include media-breakpoint-down(sm) {
+  //  white-space: unset;
+  //  font-size: 2.25rem;
+  //  line-height: 3rem;
+  //  margin: 0 0 3rem;
+  //}
+}
+
+h3 {
+  @include title;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
+h4 {
+  @include title;
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
+h5 {
+  @include title;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0 0 0.6rem;
+}
+
+.small-text {
+  @include light-text;
+}
+
+.medium-text {
+  @include light-text;
+  font-size: 1.25rem;
+}
+
+.large-text {
+  @include light-text;
+  font-size: 1.375rem;
+}
+
+.btn {
+  @include btn;
+}
+
+.like-link {
+  @include link;
+  background: none;
+  border: none;
+}
+
+form {
+  text-align: left;
+  .form-group {
+    margin-bottom: 12px;
+    label {
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 1.1rem;
+    }
+    .error-detail {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+      color: red;
+    }
+  }
+}
+
+input, select, textarea {
+  display: flex;
+  width: 100%;
+  height: 2.75rem;
+  padding: 0.5rem 1rem ;
+  font-size: 1.125rem !important;
+  line-height: 1.625rem;
+  border: 1px solid $gray;
+  &:hover {
+    border: 1px solid $black;
+    outline: none;
+  }
+  &:focus, &:active {
+    border: 1px solid $pink;
+    outline: none;
+  }
+  &[type=checkbox], &[type=radio] {
+    display: inline-flex;
+    height: unset;
+    width: auto;
+    margin-right: 0.5rem;
+  }
+  &[type=file] {
+    border: none;
+    padding: 0;
+    &:hover {
+      border: none;
+      outline: none;
+    }
+    &:focus, &:active {
+      border: none;
+      outline: none;
+    }
+  }
+
+  //@include media-breakpoint-down(sm) {
+  //  width: 100%;
+  //  height: 3rem;
+  //  font-size: 1rem !important;
+  //  padding: 0.5rem 1rem;
+  //}
+}
+
+

@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  @include media-breakpoint-down(sm) {
+    background: $white;
+  }
+  &-color {
+    position: relative;
+    background: $black;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  width: 100%;
+  padding: 2rem 0;
+  @include media-breakpoint-down(sm) {
+    padding: 1rem 0;
+    flex-wrap: wrap;
+  }
+  &-toggler {
+    display: none;
+    padding: 0.25rem 0.75rem;
+    background-color: transparent;
+    border: none;
+    &:hover, &:focus, &:active {
+      opacity: 0.6;
+    }
+    @include media-breakpoint-down(sm) {
+      display: flex;
+    }
+  }
+}
