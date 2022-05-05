@@ -13,7 +13,7 @@ const Header = () => {
           url
         }
       }
-      blockContentBasic(id: {eq: "96fb6a66-cc76-5d64-9aed-28d055ab935c"}) {
+      blockContentBasic(id: {eq: "20abfd6f-d945-5d4f-a742-c4e2d685865c"}) {
         id
         body {
           value
@@ -37,11 +37,11 @@ const Header = () => {
             </li>
           ))}
           {data.blockContentBasic ? <div dangerouslySetInnerHTML={{__html: data.blockContentBasic.body.value}} /> : '' }
-          {/*<li className="nav-item">*/}
-          {/*  <Link to="/blog" className="nav-link">*/}
-          {/*    Blog*/}
-          {/*  </Link>*/}
-          {/*</li>*/}
+         {/* <li className="nav-item">
+            <Link to="/blog" className="nav-link">
+              Blog
+            </Link>
+          </li>*/}
         </ul>
       </nav>
       </div>

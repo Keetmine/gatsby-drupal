@@ -1,15 +1,48 @@
 import React, { Component } from 'react';
 import { PopupContext } from '../helpers/context';
+import Webform from "gatsby-drupal-webform";
+import {graphql, useStaticQuery} from "gatsby";
+import {useState} from "react";
+
+
+export const Form = () => {
+  const data = useStaticQuery(graphql`
+    query webFormQuery {
+      webformWebform(drupal_internal__id: {eq: "contact"}) {
+        id
+        title
+        drupal_internal__id
+        elements {
+          name
+          attributes {
+            name
+            value
+          }
+          options {
+            label
+            value
+          }
+          type
+        }
+      }
+    }
+  `)
+  const [submitted, setSubmitted] = useState(false)
+  console.log(data)
+  return (
+    <Webform
+      id="contact_webform"
+      webform={data.webformWebform}
+      endpoint={'http://tr3.loc/react_webform_backend/submit'}
+      onSuccess={() => {
+        setSubmitted(true)
+      }}
+    />
+  )
+}
 
 class WebFormModal extends Component {
   static contextType = PopupContext
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      form: [],
-    };
-  }
 
   componentDidMount() {
     const { togglePopup, title } = this.props;
@@ -24,20 +57,8 @@ class WebFormModal extends Component {
     return () => clearTimeout(timer);
   }
 
-  loadWebform = (title) => {
-    // getWebform(title)
-    //   .then((data) => {
-    //     this.setState({ form: data.webform });
-    //   },
-    //   (error) => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(error.message);
-    //   });
-  }
-
   render() {
     const showPopup = this.context;
-    const { form } = this.state;
     const { togglePopup } = this.props;
 
     if (!showPopup) {
@@ -52,7 +73,7 @@ class WebFormModal extends Component {
               </button>
             </div>
             <div className="modal-body">
-              {/*{form ? <YAMLForm schema={form} /> : ''}*/}
+              <Form />
             </div>
           </div>
         </div>

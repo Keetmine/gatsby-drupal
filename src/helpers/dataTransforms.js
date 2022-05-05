@@ -1,4 +1,5 @@
 import {DRUPAL_URL} from "./constants";
+import * as yaml from 'js-yaml';
 
 export const column = (data) => ({
   id: data.id,
@@ -22,7 +23,7 @@ export const contentSections = (data) => ({
   styles: data.field_styles,
   columns: data.relationships.field_column.map((col) => column(col)),
   background_image: data.relationships.field_image_background ? DRUPAL_URL + data.relationships.field_image_background.uri.url : null,
-  slideshow: data.relationships.field_slideshow_paragraph ? data.relationships.field_slideshow_paragraph.map((slid) => slide(slid)) : '',
+  slideshow: data.relationships.field_slideshow ? data.relationships.field_slideshow.relationships.field_slides.map((slid) => slide(slid)) : '',
 });
 
 export const pagesWithContent = (data) => ({
@@ -30,3 +31,24 @@ export const pagesWithContent = (data) => ({
   title: data.nodePage.title,
   content_section: data.nodePage.relationships.field_section_text.map((content) => contentSections(content)),
 });
+
+export const webformForm = (data) => ({
+  id: data.webformWebform.id,
+  title: data.webformWebform.title,
+  elements: JSON.stringify(data.webformWebform.elements)
+});
+
+
+export const YAMLToJSON = (data) => {
+  let YAMLData = data.webformWebform.elements
+  let obj = JSON.stringify(yaml.load(YAMLData), null, 2);
+  obj = obj.replace(/#/g, '');
+  obj = JSON.parse(obj);
+  obj = Object.keys(obj).map((key) => ({'name': key, ...obj[key]}));
+
+  return {
+    id: data.webformWebform.id,
+    title: data.webformWebform.title,
+    elements: obj
+  }
+};

@@ -7,18 +7,15 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `http://training.loc/`,
+        baseUrl: `http://tr3.loc/`,
         apiBase: `jsonapi`,
-        // basicAuth: {
-        //   username: 'admin',
-        //   password: 'admin'
-        // }
+        skipFileDownloads: true,
       },
     },
     {
       resolve: `gatsby-source-drupal-menu-links`,
       options: {
-        baseUrl: `http://training.loc/`,
+        baseUrl: `http://tr3.loc/`,
         apiBase: `jsonapi`,
         menus: ["main"], // Which menus to fetch, there are the menu IDs.
       },
@@ -37,7 +34,3 @@ module.exports = {
     "gatsby-transformer-sharp",
   ]
 };
-
-require("dotenv").config({
-  path: `.env.development`,
-})
