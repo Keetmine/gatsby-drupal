@@ -14,21 +14,26 @@ export const Form = () => {
         drupal_internal__id
         elements {
           name
+          type
           attributes {
             name
             value
           }
-          options {
-            label
-            value
-          }
-          type
+          
         }
       }
     }
   `)
   const [submitted, setSubmitted] = useState(false)
-  console.log(data)
+  if (data.webformWebform && data.webformWebform.elements) {
+    data.webformWebform.elements = data.webformWebform.elements.map(el => {
+      let newEl = {...el}
+      newEl.attributes = el.attributes.filter((item) => {
+        return item.name !== "#default_value" })
+      return newEl
+    })
+  }
+
   return (
     <Webform
       id="contact_webform"
@@ -45,7 +50,7 @@ class WebFormModal extends Component {
   static contextType = PopupContext
 
   componentDidMount() {
-    const { togglePopup, title } = this.props;
+    const { togglePopup } = this.props;
 
     // TODO fix this
     const timer = setTimeout(() => {
@@ -64,7 +69,7 @@ class WebFormModal extends Component {
     if (!showPopup) {
       return null;
     } return (
-      <div className="modal show" tabIndex="-1" role="dialog">
+      <div className="modal show " tabIndex="-1" role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

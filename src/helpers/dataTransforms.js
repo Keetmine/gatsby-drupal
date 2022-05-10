@@ -1,5 +1,4 @@
 import {DRUPAL_URL} from "./constants";
-import * as yaml from 'js-yaml';
 
 export const column = (data) => ({
   id: data.id,
@@ -37,18 +36,3 @@ export const webformForm = (data) => ({
   title: data.webformWebform.title,
   elements: JSON.stringify(data.webformWebform.elements)
 });
-
-
-export const YAMLToJSON = (data) => {
-  let YAMLData = data.webformWebform.elements
-  let obj = JSON.stringify(yaml.load(YAMLData), null, 2);
-  obj = obj.replace(/#/g, '');
-  obj = JSON.parse(obj);
-  obj = Object.keys(obj).map((key) => ({'name': key, ...obj[key]}));
-
-  return {
-    id: data.webformWebform.id,
-    title: data.webformWebform.title,
-    elements: obj
-  }
-};

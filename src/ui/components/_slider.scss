@@ -73,6 +73,7 @@
   }
   img {
     display: block;
+    width: 100%;
   }
   &.slick-loading img {
     display: none;
@@ -370,15 +371,15 @@ $slick-opacity-not-active: 0.25 !default;
       width: 100%;
       background: $browser-window url("/images/browser-window.png") no-repeat left top;
       background-size: contain;
-      @include media-breakpoint-down(md) {
-        height: $slide-top-bg-size-md;
-      }
-      @include media-breakpoint-down(sm) {
-        height: $slide-top-bg-size-sm;
-      }
-      @include media-breakpoint-down(xs) {
-        height: $slide-top-bg-size-xs;
-      }
+      //@include media-breakpoint-down(md) {
+      //  height: $slide-top-bg-size-md;
+      //}
+      //@include media-breakpoint-down(sm) {
+      //  height: $slide-top-bg-size-sm;
+      //}
+      //@include media-breakpoint-down(xs) {
+      //  height: $slide-top-bg-size-xs;
+      //}
     }
   }
 

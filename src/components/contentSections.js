@@ -18,7 +18,6 @@ const ContentSections = ({section}) => {
           {section.columns ? (
             <div className="row">
               {section.columns.map((column) => (
-                <>
                   <div key={column.id} className={`${column.size} ${column.text_size} column`}>
                     <div dangerouslySetInnerHTML={{__html: column.content}} />
                     {column.map ? (
@@ -30,7 +29,6 @@ const ContentSections = ({section}) => {
                       </div>
                     ) : ''}
                   </div>
-                </>
               ))}
             </div>
           ) : ''}

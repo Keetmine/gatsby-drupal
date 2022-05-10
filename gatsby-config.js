@@ -9,7 +9,6 @@ module.exports = {
       options: {
         baseUrl: `http://tr3.loc/`,
         apiBase: `jsonapi`,
-        skipFileDownloads: true,
       },
     },
     {
@@ -17,20 +16,11 @@ module.exports = {
       options: {
         baseUrl: `http://tr3.loc/`,
         apiBase: `jsonapi`,
-        menus: ["main"], // Which menus to fetch, there are the menu IDs.
+        menus: ["main"],
       },
     },
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `blog`,
-        path: `${__dirname}/blog`,
-      }
-    },
-    "gatsby-plugin-mdx",
-    "gatsby-transformer-sharp",
   ]
 };

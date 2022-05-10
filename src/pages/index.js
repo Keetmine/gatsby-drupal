@@ -2,9 +2,8 @@ import * as React from 'react'
 import Layout from "../components/layout/layout";
 import "../ui/_index.scss"
 import {graphql} from "gatsby";
-import {pagesWithContent, webformForm, YAMLToJSON} from "../helpers/dataTransforms";
+import {pagesWithContent} from "../helpers/dataTransforms";
 import ContentSections from "../components/contentSections";
-import {useState} from "react";
 
 
 const IndexPage = ({data}) => {
@@ -66,6 +65,7 @@ export const query = graphql`
               id
               relationships {
                 field_slides {
+                  id
                   field_background_color
                   relationships {
                     field_background_image {
@@ -74,6 +74,7 @@ export const query = graphql`
                       }
                     }
                     field_slide_column {
+                      id
                       field_column_text_size
                       field_column_size
                       field_column_content {
